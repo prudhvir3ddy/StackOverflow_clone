@@ -25,6 +25,7 @@ import com.prudhvir3ddy.stackoverflow_clone.fragments.HotFragment;
 import com.prudhvir3ddy.stackoverflow_clone.fragments.TagFragment;
 import com.prudhvir3ddy.stackoverflow_clone.fragments.WeekFragment;
 import com.prudhvir3ddy.stackoverflow_clone.utils.SharedPrefs;
+import com.prudhvir3ddy.stackoverflow_clone.utils.Urls;
 
 import org.json.JSONObject;
 
@@ -33,6 +34,7 @@ public class QuestionListAcivity extends AppCompatActivity
 
     SharedPrefs sharedPrefs;
     private BottomNavigationView bottomNavigationView;
+    String tagurl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +48,13 @@ public class QuestionListAcivity extends AppCompatActivity
         final String param2 = intent.getStringExtra("param2");
         final String param3 = intent.getStringExtra("param3");
         final String param4 = intent.getStringExtra("param4");
-
+        tagurl = Urls.tagged + param1 + ";" + param2 + ";" + param3 + ";" + param4 + "&site=stackoverflow";
         toolbar.setTitle("Your #");
-        loadFragment(new TagFragment());
+        Bundle bundle = new Bundle();
+        bundle.putString("url", tagurl);
+        Fragment fragment = new TagFragment();
+        fragment.setArguments(bundle);
+        loadFragment(fragment);
         bottomNavigationView = findViewById(R.id.navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,8 +63,11 @@ public class QuestionListAcivity extends AppCompatActivity
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
+                        Bundle bundle = new Bundle();
+                        bundle.putString("url", tagurl);
                         toolbar.setTitle("Your #");
                         fragment = new TagFragment();
+                        fragment.setArguments(bundle);
                         loadFragment(fragment);
                         return true;
                     case R.id.navigation_dashboard:
@@ -137,6 +146,13 @@ public class QuestionListAcivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
+        tagurl = Urls.tagged + item.getTitle().toString() + "&site=stackoverflow";
+        Bundle bundle = new Bundle();
+        bundle.putString("url", tagurl);
+        Fragment fragment = new TagFragment();
+        fragment.setArguments(bundle);
+        loadFragment(fragment);
+
         if (id == R.id.nav_camera) {
             getTags(item.getTitle().toString());
         }

@@ -3,20 +3,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
             android:title="Import" />
+    <group
+        android:id="@+id/one"
+        android:checkableBehavior="none"
+        android:visible="false">
+        <item
+            android:id="@+id/two"
+            android:title="Outdoor" />
+        <item
+            android:id="@+id/three"
+            android:title="Clocks" />
+        <item
+            android:id="@+id/four"
+            android:title="Select map" />
+    </group>
         <item
             android:id="@+id/nav_gallery"
             android:title="Gallery" />
+    <group
+        android:id="@+id/SetupGroup"
+        android:checkableBehavior="none"
+        android:visible="false">
+        <item
+            android:id="@+id/five"
+            android:title="Outdoor" />
+        <item
+            android:id="@+id/six"
+            android:title="Clocks" />
+        <item
+            android:id="@+id/seven"
+            android:title="Select map" />
+    </group>
         <item
             android:id="@+id/nav_slideshow"
             android:title="Slideshow" />
+    <group
+        android:id="@+id/Setup"
+        android:checkableBehavior="none"
+        android:visible="false">
+        <item
+            android:id="@+id/eight"
+            android:title="Outdoor" />
+        <item
+            android:id="@+id/nine"
+            android:title="Clocks" />
+        <item
+            android:id="@+id/ten"
+            android:title="Select map" />
+    </group>
         <item
             android:id="@+id/nav_manage"
             android:title="Tools" />
+    <group
+        android:id="@+id/Setupfd"
+        android:checkableBehavior="none"
+        android:visible="false">
+        <item
+            android:id="@+id/eleven"
+            android:title="Outdoor" />
+        <item
+            android:id="@+id/tw"
+            android:title="Clocks" />
+        <item
+            android:id="@+id/thi"
+            android:title="Select map" />
     </group>
-
 
 </menu>

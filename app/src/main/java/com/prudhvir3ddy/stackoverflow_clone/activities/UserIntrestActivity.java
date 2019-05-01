@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -70,10 +71,10 @@ public class UserIntrestActivity extends AppCompatActivity {
                 if (selected.size() == 4) {
                     Intent intent = new Intent(getApplicationContext(), QuestionListAcivity.class);
                     Object params[] = selected.toArray();
-                    intent.putExtra("param1", params[0].toString());
-                    intent.putExtra("param2", params[1].toString());
-                    intent.putExtra("param3", params[2].toString());
-                    intent.putExtra("param4", params[3].toString());
+                    intent.putExtra("param1", params[0].toString().replace("#", "%23"));
+                    intent.putExtra("param2", params[1].toString().replace("#", "%23"));
+                    intent.putExtra("param3", params[2].toString().replace("#", "%23"));
+                    intent.putExtra("param4", params[3].toString().replace("#", "%23"));
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Please select 4 options", Toast.LENGTH_SHORT).show();
@@ -103,6 +104,7 @@ public class UserIntrestActivity extends AppCompatActivity {
                         @Override
                         public void onError(ANError anError) {
                             loadToast.error();
+                            Log.d("error", "" + anError.getResponse());
                             Toast.makeText(getApplicationContext(), "some error in getting data", Toast.LENGTH_SHORT).show();
                         }
                     });

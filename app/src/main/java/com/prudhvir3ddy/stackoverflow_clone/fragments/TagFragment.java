@@ -35,10 +35,11 @@ public class TagFragment extends Fragment {
     TagRecyclerViewAdapter recyclerViewAdapter;
     RecyclerView recyclerView;
     LoadToast loadToast;
-
+    String url;
     public TagFragment() {
         // Required empty public constructor
     }
+
 
 
     @Override
@@ -46,6 +47,8 @@ public class TagFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         strings = new ArrayList<>();
+        url = getArguments().getString("url");
+        Log.d("ser", url);
         View rootView = inflater.inflate(R.layout.fragment_tag, container, false);
         recyclerView = rootView.findViewById(R.id.tag_recyclerview);
         recyclerViewAdapter = new TagRecyclerViewAdapter(getContext(), strings);
@@ -55,7 +58,7 @@ public class TagFragment extends Fragment {
         loadToast.setText("Loading..");
         loadToast.show();
 
-        AndroidNetworking.get("https://api.stackexchange.com/2.2/questions?order=desc&sort=hot&site=stackoverflow")
+        AndroidNetworking.get(url)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
