@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.UserIntrestActivity">
+
+    <HorizontalScrollView
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/param1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/rounded_button"
+                android:drawableRight="@drawable/ic_clear_black_24dp"
+                android:onClick="param1click"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Java"
+                android:textColor="@android:color/white"
+                android:visibility="gone"
+
+                />
+
+            <Button
+                android:id="@+id/param2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/rounded_button"
+                android:drawableRight="@drawable/ic_clear_black_24dp"
+                android:onClick="param2click"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Python"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/param3"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/rounded_button"
+                android:drawableRight="@drawable/ic_clear_black_24dp"
+                android:onClick="param3click"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Andriod "
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/param4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/rounded_button"
+                android:drawableRight="@drawable/ic_clear_black_24dp"
+                android:onClick="param4click"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Html"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="SUBMIT"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
