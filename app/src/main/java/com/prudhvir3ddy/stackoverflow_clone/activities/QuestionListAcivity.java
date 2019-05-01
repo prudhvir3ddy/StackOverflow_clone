@@ -215,17 +215,17 @@ public class QuestionListAcivity extends AppCompatActivity
                             navigationView.getMenu().setGroupVisible(R.id.Setupfd, false);
                             navigationView.getMenu().setGroupVisible(R.id.SetupGroup, false);
                             navigationView.getMenu().setGroupVisible(R.id.one, false);
-                            navigationView.getMenu().findItem(R.id.five).setTitle(tags[0]);
-                            navigationView.getMenu().findItem(R.id.six).setTitle(tags[1]);
-                            navigationView.getMenu().findItem(R.id.seven).setTitle(tags[2]);
+                            navigationView.getMenu().findItem(R.id.eight).setTitle(tags[0]);
+                            navigationView.getMenu().findItem(R.id.nine).setTitle(tags[1]);
+                            navigationView.getMenu().findItem(R.id.ten).setTitle(tags[2]);
                         } else if (id.equals("manage")) {
                             navigationView.getMenu().setGroupVisible(R.id.Setupfd, true);
                             navigationView.getMenu().setGroupVisible(R.id.SetupGroup, false);
                             navigationView.getMenu().setGroupVisible(R.id.one, false);
                             navigationView.getMenu().setGroupVisible(R.id.Setup, false);
-                            navigationView.getMenu().findItem(R.id.five).setTitle(tags[0]);
-                            navigationView.getMenu().findItem(R.id.six).setTitle(tags[1]);
-                            navigationView.getMenu().findItem(R.id.seven).setTitle(tags[2]);
+                            navigationView.getMenu().findItem(R.id.eleven).setTitle(tags[0]);
+                            navigationView.getMenu().findItem(R.id.tw).setTitle(tags[1]);
+                            navigationView.getMenu().findItem(R.id.thi).setTitle(tags[2]);
                         }
 
 

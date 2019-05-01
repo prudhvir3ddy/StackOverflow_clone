@@ -70,6 +70,12 @@
         <item
             android:id="@+id/thi"
             android:title="Select map" />
+        <item
+            android:id="@+id/fourteen"
+            android:title="Clocks" />
+        <item
+            android:id="@+id/fifteen"
+            android:title="Select map" />
     </group>
 
 </menu>
