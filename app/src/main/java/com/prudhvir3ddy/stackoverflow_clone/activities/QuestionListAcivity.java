@@ -42,7 +42,7 @@ public class QuestionListAcivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
         final Toolbar toolbar = findViewById(R.id.toolbar);
-        tags = new String[3];
+        tags = new String[5];
         setSupportActionBar(toolbar);
         sharedPrefs = new SharedPrefs(getApplicationContext());
         Intent intent = getIntent();
@@ -156,7 +156,6 @@ public class QuestionListAcivity extends AppCompatActivity
         loadFragment(fragment);
         if (id == R.id.nav_camera) {
             getTags(item.getTitle().toString(), "camera");
-
         }
         if (id == R.id.nav_gallery) {
             getTags(item.getTitle().toString(), "gallery");
@@ -164,17 +163,9 @@ public class QuestionListAcivity extends AppCompatActivity
         }
         if (id == R.id.nav_slideshow) {
             getTags(item.getTitle().toString(), "slide");
-            navigationView.getMenu().setGroupVisible(R.id.Setup, true);
-            navigationView.getMenu().findItem(R.id.eight).setTitle(tags[0]);
-            navigationView.getMenu().findItem(R.id.nine).setTitle(tags[1]);
-            navigationView.getMenu().findItem(R.id.ten).setTitle(tags[2]);
         }
         if (id == R.id.nav_manage) {
             getTags(item.getTitle().toString(), "manage");
-            navigationView.getMenu().setGroupVisible(R.id.Setupfd, true);
-            navigationView.getMenu().findItem(R.id.eleven).setTitle(tags[0]);
-            navigationView.getMenu().findItem(R.id.tw).setTitle(tags[1]);
-            navigationView.getMenu().findItem(R.id.thi).setTitle(tags[2]);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -190,7 +181,7 @@ public class QuestionListAcivity extends AppCompatActivity
                     public void onResponse(JSONObject response) {
                         JSONArray items = response.optJSONArray("items");
 
-                        for (int i = 0; i < 3; i++) {
+                        for (int i = 0; i < 5; i++) {
                             JSONObject object = items.optJSONObject(i);
                             tags[i] = object.optString("name");
                         }
@@ -199,33 +190,41 @@ public class QuestionListAcivity extends AppCompatActivity
                             navigationView.getMenu().setGroupVisible(R.id.SetupGroup, false);
                             navigationView.getMenu().setGroupVisible(R.id.Setup, false);
                             navigationView.getMenu().setGroupVisible(R.id.Setupfd, false);
-                            navigationView.getMenu().findItem(R.id.two).setTitle(tags[0]);
-                            navigationView.getMenu().findItem(R.id.three).setTitle(tags[1]);
-                            navigationView.getMenu().findItem(R.id.four).setTitle(tags[2]);
+                            navigationView.getMenu().findItem(R.id.two).setTitle("# " + tags[0]);
+                            navigationView.getMenu().findItem(R.id.three).setTitle("# " + tags[1]);
+                            navigationView.getMenu().findItem(R.id.four).setTitle("# " + tags[2]);
+                            navigationView.getMenu().findItem(R.id.twenty).setTitle("# " + tags[3]);
+                            navigationView.getMenu().findItem(R.id.twenty_one).setTitle("# " + tags[4]);
                         } else if (id.equals("gallery")) {
                             navigationView.getMenu().setGroupVisible(R.id.SetupGroup, true);
                             navigationView.getMenu().setGroupVisible(R.id.one, false);
                             navigationView.getMenu().setGroupVisible(R.id.Setup, false);
                             navigationView.getMenu().setGroupVisible(R.id.Setupfd, false);
-                            navigationView.getMenu().findItem(R.id.five).setTitle(tags[0]);
-                            navigationView.getMenu().findItem(R.id.six).setTitle(tags[1]);
-                            navigationView.getMenu().findItem(R.id.seven).setTitle(tags[2]);
+                            navigationView.getMenu().findItem(R.id.five).setTitle("# " + tags[0]);
+                            navigationView.getMenu().findItem(R.id.six).setTitle("# " + tags[1]);
+                            navigationView.getMenu().findItem(R.id.seven).setTitle("# " + tags[2]);
+                            navigationView.getMenu().findItem(R.id.eighteen).setTitle("# " + tags[3]);
+                            navigationView.getMenu().findItem(R.id.nineteen).setTitle("# " + tags[4]);
                         } else if (id.equals("slide")) {
                             navigationView.getMenu().setGroupVisible(R.id.Setup, true);
                             navigationView.getMenu().setGroupVisible(R.id.Setupfd, false);
                             navigationView.getMenu().setGroupVisible(R.id.SetupGroup, false);
                             navigationView.getMenu().setGroupVisible(R.id.one, false);
-                            navigationView.getMenu().findItem(R.id.eight).setTitle(tags[0]);
-                            navigationView.getMenu().findItem(R.id.nine).setTitle(tags[1]);
-                            navigationView.getMenu().findItem(R.id.ten).setTitle(tags[2]);
+                            navigationView.getMenu().findItem(R.id.eight).setTitle("# " + tags[0]);
+                            navigationView.getMenu().findItem(R.id.nine).setTitle("# " + tags[1]);
+                            navigationView.getMenu().findItem(R.id.ten).setTitle("# " + tags[2]);
+                            navigationView.getMenu().findItem(R.id.sixteen).setTitle("# " + tags[3]);
+                            navigationView.getMenu().findItem(R.id.seventeen).setTitle("# " + tags[4]);
                         } else if (id.equals("manage")) {
                             navigationView.getMenu().setGroupVisible(R.id.Setupfd, true);
                             navigationView.getMenu().setGroupVisible(R.id.SetupGroup, false);
                             navigationView.getMenu().setGroupVisible(R.id.one, false);
                             navigationView.getMenu().setGroupVisible(R.id.Setup, false);
-                            navigationView.getMenu().findItem(R.id.eleven).setTitle(tags[0]);
-                            navigationView.getMenu().findItem(R.id.tw).setTitle(tags[1]);
-                            navigationView.getMenu().findItem(R.id.thi).setTitle(tags[2]);
+                            navigationView.getMenu().findItem(R.id.eleven).setTitle("# " + tags[0]);
+                            navigationView.getMenu().findItem(R.id.tw).setTitle("# " + tags[1]);
+                            navigationView.getMenu().findItem(R.id.thi).setTitle("# " + tags[2]);
+                            navigationView.getMenu().findItem(R.id.fourteen).setTitle("# " + tags[3]);
+                            navigationView.getMenu().findItem(R.id.fifteen).setTitle("# " + tags[4]);
                         }
 
 

@@ -19,6 +19,12 @@
         <item
             android:id="@+id/four"
             android:title="Select map" />
+        <item
+            android:id="@+id/twenty"
+            android:title="Clocks" />
+        <item
+            android:id="@+id/twenty_one"
+            android:title="Select map" />
     </group>
         <item
             android:id="@+id/nav_gallery"
@@ -36,6 +42,12 @@
         <item
             android:id="@+id/seven"
             android:title="Select map" />
+        <item
+            android:id="@+id/eighteen"
+            android:title="Clocks" />
+        <item
+            android:id="@+id/nineteen"
+            android:title="Select map" />
     </group>
         <item
             android:id="@+id/nav_slideshow"
@@ -52,6 +64,12 @@
             android:title="Clocks" />
         <item
             android:id="@+id/ten"
+            android:title="Select map" />
+        <item
+            android:id="@+id/sixteen"
+            android:title="Clocks" />
+        <item
+            android:id="@+id/seventeen"
             android:title="Select map" />
     </group>
         <item
