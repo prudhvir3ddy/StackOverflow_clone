@@ -12,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -27,6 +26,7 @@ import com.prudhvir3ddy.stackoverflow_clone.fragments.WeekFragment;
 import com.prudhvir3ddy.stackoverflow_clone.utils.SharedPrefs;
 import com.prudhvir3ddy.stackoverflow_clone.utils.Urls;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class QuestionListAcivity extends AppCompatActivity
@@ -35,12 +35,14 @@ public class QuestionListAcivity extends AppCompatActivity
     SharedPrefs sharedPrefs;
     private BottomNavigationView bottomNavigationView;
     String tagurl;
-
+    String tags[];
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_list);
         final Toolbar toolbar = findViewById(R.id.toolbar);
+        tags = new String[3];
         setSupportActionBar(toolbar);
         sharedPrefs = new SharedPrefs(getApplicationContext());
         Intent intent = getIntent();
@@ -92,7 +94,7 @@ public class QuestionListAcivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         Menu menu = navigationView.getMenu();
@@ -152,32 +154,70 @@ public class QuestionListAcivity extends AppCompatActivity
         Fragment fragment = new TagFragment();
         fragment.setArguments(bundle);
         loadFragment(fragment);
-
         if (id == R.id.nav_camera) {
-            getTags(item.getTitle().toString());
+            getTags(item.getTitle().toString(), "camera");
+
         }
         if (id == R.id.nav_gallery) {
-            getTags(item.getTitle().toString());
+            getTags(item.getTitle().toString(), "gallery");
+
         }
         if (id == R.id.nav_slideshow) {
-            getTags(item.getTitle().toString());
+            getTags(item.getTitle().toString(), "slide");
+            navigationView.getMenu().setGroupVisible(R.id.Setup, true);
+            navigationView.getMenu().findItem(R.id.eight).setTitle(tags[0]);
+            navigationView.getMenu().findItem(R.id.nine).setTitle(tags[1]);
+            navigationView.getMenu().findItem(R.id.ten).setTitle(tags[2]);
         }
         if (id == R.id.nav_manage) {
-            getTags(item.getTitle().toString());
+            getTags(item.getTitle().toString(), "manage");
+            navigationView.getMenu().setGroupVisible(R.id.Setupfd, true);
+            navigationView.getMenu().findItem(R.id.eleven).setTitle(tags[0]);
+            navigationView.getMenu().findItem(R.id.tw).setTitle(tags[1]);
+            navigationView.getMenu().findItem(R.id.thi).setTitle(tags[2]);
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    private void getTags(String tag) {
+    private void getTags(String tag, final String id) {
         AndroidNetworking.get("https://api.stackexchange.com/2.2/tags?order=desc&sort=activity&inname=" + tag + "&site=stackoverflow")
                 .setPriority(Priority.IMMEDIATE)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("respomse", "" + response);
+                        JSONArray items = response.optJSONArray("items");
+
+                        for (int i = 0; i < 3; i++) {
+                            JSONObject object = items.optJSONObject(i);
+                            tags[i] = object.optString("name");
+                        }
+                        if (id.equals("camera")) {
+                            navigationView.getMenu().setGroupVisible(R.id.one, true);
+                            navigationView.getMenu().findItem(R.id.two).setTitle(tags[0]);
+                            navigationView.getMenu().findItem(R.id.three).setTitle(tags[1]);
+                            navigationView.getMenu().findItem(R.id.four).setTitle(tags[2]);
+                        } else if (id.equals("gallery")) {
+                            navigationView.getMenu().setGroupVisible(R.id.SetupGroup, true);
+                            navigationView.getMenu().findItem(R.id.five).setTitle(tags[0]);
+                            navigationView.getMenu().findItem(R.id.six).setTitle(tags[1]);
+                            navigationView.getMenu().findItem(R.id.seven).setTitle(tags[2]);
+                        } else if (id.equals("slide")) {
+                            navigationView.getMenu().setGroupVisible(R.id.SetupGroup, true);
+                            navigationView.getMenu().findItem(R.id.five).setTitle(tags[0]);
+                            navigationView.getMenu().findItem(R.id.six).setTitle(tags[1]);
+                            navigationView.getMenu().findItem(R.id.seven).setTitle(tags[2]);
+                        } else if (id.equals("manage")) {
+                            navigationView.getMenu().setGroupVisible(R.id.SetupGroup, true);
+                            navigationView.getMenu().findItem(R.id.five).setTitle(tags[0]);
+                            navigationView.getMenu().findItem(R.id.six).setTitle(tags[1]);
+                            navigationView.getMenu().findItem(R.id.seven).setTitle(tags[2]);
+                        }
+
+
+
                     }
 
                     @Override
